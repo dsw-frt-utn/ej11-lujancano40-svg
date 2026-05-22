@@ -7,4 +7,51 @@
 //Incluir un método para eliminar un alumno utilizando la clave
 public class CasoDictionary
 {
+   
+    private Dictionary<int, Alumno> alumnos;
+
+    public CasoDictionary()
+    {
+        alumnos = new Dictionary<int, Alumno>();
+    }
+    public void AgregarAlumno(int legajo, Alumno alumno)
+    {
+        alumnos.Add(legajo, alumno);
+    }
+    public Alumno BuscarAlumno(int legajo)
+    {
+        if (alumnos.ContainsKey(legajo))
+        {
+            return alumnos[legajo];
+        }
+
+        return null;
+    }
+    public Dictionary<int, Alumno> ObtenerAlumnos()
+    {
+        return alumnos;
+    }
+    public void EliminarAlumno(int legajo)
+    {
+        alumnos.Remove(legajo);
+    }
+}
+
+    public class Alumno
+{
+    public int Id { get; }
+    public string Nombre { get; }
+    public double Promedio { get; }
+
+    public Alumno(int id, string nombre, double promedio)
+    {
+        Id = id;
+        Nombre = nombre;
+        Promedio = promedio;
+    }
+
+    public override string ToString()
+    {
+        return $"{Id} - {Nombre} - Promedio: {Promedio}";
+    }
 }
